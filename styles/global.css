@@ -1,0 +1,43 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.square-300px {width: 300px;    height: 300px; object-fit: cover;}
+.square-150px {width: 150px;    height: 150px; object-fit: cover;}
+.circle {border-radius: 50%;}
+
+.one-fifth {width: 20%;}
+.four-fifth {width: 80%;}
+.one-fourth {width: 25%;}
+.three-fourth {width: 75%;}
+.one-third {width: 33.33%;}
+.two-third {width: 66.66%;}
+.one-half {width: 50%;}
+
+.center {text-align: center;}
+.right {text-align: right;}
+
+.fl-left{float: left;}
+.fl-right{float: right;}
+.clearfix {clear:both;display: block;}
+
+.flex-wp {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.dropdown {position: relative; list-style-type: none;}
+nav a {text-decoration: none; color:black}
+nav a:hover {background-color: gray;}
+.dropdown-content {display: none;}
+.dropdown:hover .dropdown-content {
+    display: block;
+    position: absolute;
+    box-shadow: 2px 2px 5px;
+    z-index: 2;
+}
+
+

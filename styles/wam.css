@@ -1,0 +1,188 @@
+* {cursor:none}
+
+body {
+    font-family: 'Helvetica';
+    overflow: hidden;
+}
+.no-pointer {
+    pointer-events: none;
+}
+.mallet-cursor {
+    width: 15rem;
+    height: 15rem;
+    background: url(../images/mallet-fr1.gif) no-repeat;
+    background-size: contain;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+}
+.mallet-move {animation: msmack .5s 1;}
+@keyframes msmack{
+    0% {background-image: url(../images/mallet-fr2.gif); }
+    40% {background-image: url(../images/mallet-fr3.gif); }
+    75% {background-image: url(../images/mallet-fr4.gif); }
+    100% {background-image: url(../images/mallet-fr1.gif); }
+}
+.fade-in {animation: fade 1s 1 forwards;}
+.fade-out {animation: fade 1s 1 reverse forwards;}
+@keyframes fade{
+    0% {opacity: 0;};
+    100% {opacity: 1;}
+}
+
+.wrapper {
+    border: 1px solid black;
+    width: 960px;
+    height: 700px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-image: url('../images/background-grass.jpg');
+    background-size: cover;
+}
+.scoreboard {
+    padding: 0 1rem;
+    border-radius: 1rem;
+    font-size: 8rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    z-index: 1;
+    color: white;
+    text-shadow: 0 0 10px;
+}
+.scoreboard::after {
+    font-size: 3rem;
+    display: block;
+    content: 'Mole Smacked';
+}
+.countdown {
+    position: absolute;
+    top: 1.5rem;
+    width: 100%;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px 5px #000;
+    color: #fff;
+    z-index: 1;
+}
+
+#game-title {
+    background-image: url(../images/title.png);
+    width: 100%;
+    height: 30%;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 5rem;
+}
+#credit {
+    position: absolute;
+    right: 2rem;
+    bottom: 2rem;
+    color: #fff;
+}
+
+.btn {
+    position: absolute;
+    padding: .5rem;    
+    border-radius: .25rem;
+    background-color: #fff;
+    z-index: 2;    
+    transform: translate(-50%,-50%);
+}
+.startButton {
+    top: 50%;
+    left: 50%;
+    font-size: 3rem;
+}
+.musicButton {
+    top: 3em;
+    right: 6.0em;
+}
+.soundButton {
+    top: 3em;
+    right: 1em;
+}
+
+.replayButton {
+    font-size: 3rem;
+    top: 30rem;
+    right: calc(50% + 2rem);
+    transform: translateX(0%);
+}
+.partyButton {
+    font-size: 3rem;
+    top: 30rem;
+    left: calc(50% + 2rem);
+    transform: translateX(0%);
+}
+.berzerk-deco {
+    background-color: red;
+    color: turquoise;
+}
+.gameboard-wp {
+    height: 80%;
+    width: 80%;
+    margin: 70px auto;
+}
+.gameboard {    
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.hole {
+    flex: 1 0 33.33%;
+    position: relative;
+    overflow: hidden;
+    /* z-index: 99; */
+}
+.hole:after {
+    content: '';
+    display: block;
+    background: url('../images/dirt.png') no-repeat;
+    background-position: bottom;
+    position: absolute;
+    width: 100%;
+    min-height: 6rem;
+    bottom: -15px;
+    background-size: contain;
+    /* z-index: 101; */
+}
+
+.mole {
+    background-image: url('../images/mole.png');
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    height: 100%;
+    transition: 0.4s;
+    background-repeat: no-repeat;
+    background-position: top;
+}
+.mole.small {
+    background-size: 60%;
+}
+.mole.large {
+    background-size: 80%;
+}
+.hole.up .mole.large {top: 10%;}
+.hole.up .mole.small {top: 40%;}
+.overlay {
+    background-color: #000;
+    opacity: .6;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.hideit {
+    display: none;
+}

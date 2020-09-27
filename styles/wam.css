@@ -4,19 +4,17 @@ body {
     font-family: 'Helvetica';
     overflow: hidden;
 }
-.no-pointer {
-    pointer-events: none;
-}
+.no-pointer {pointer-events: none;}
 .mallet-cursor {
     width: 15rem;
     height: 15rem;
-    background: url(../images/mallet-fr1.gif) no-repeat;
-    background-size: contain;
     position: absolute;
+    background-size: contain;
+    background: url(../images/mallet-fr1.gif) no-repeat;
     transform: translate(-50%,-50%);
     z-index: 1;
 }
-.mallet-move {animation: msmack .5s 1;}
+.mallet-move {animation: msmack .4s 1;}
 @keyframes msmack{
     0% {background-image: url(../images/mallet-fr2.gif); }
     40% {background-image: url(../images/mallet-fr3.gif); }
@@ -29,76 +27,80 @@ body {
     0% {opacity: 0;};
     100% {opacity: 1;}
 }
-
+.mole-animate {animation: mole .3s 1 both;}
+@keyframes mole {
+    0% {backgroundImage : 'url("../assets/images/mole.png")'; opacity: 1;};
+    100% {backgroundImage : 'url("../assets/images/mole-stunned.png")'; opacity: 0.7;};
+}
 .wrapper {
-    border: 1px solid black;
     width: 960px;
     height: 700px;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
     background-image: url('../images/background-grass.jpg');
     background-size: cover;
+    border: 1px solid black;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
 }
 .scoreboard {
-    padding: 0 1rem;
     border-radius: 1rem;
-    font-size: 8rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    text-align: center;
-    z-index: 1;
     color: white;
+    font-size: 8rem;
+    left: 50%;
+    padding: 0 1rem;
+    position: absolute;
+    text-align: center;
     text-shadow: 0 0 10px;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
 }
 .scoreboard::after {
-    font-size: 3rem;
-    display: block;
     content: 'Mole Smacked';
+    display: block;
+    font-size: 3rem;
 }
 .countdown {
-    position: absolute;
-    top: 1.5rem;
     width: 100%;
+    color: #fff;
     font-size: 3rem;
     font-weight: bold;
+    position: absolute;
     text-align: center;
     text-shadow: 2px 2px 5px #000;
-    color: #fff;
+    top: 1.5rem;
     z-index: 1;
 }
 
 #game-title {
-    background-image: url(../images/title.png);
     width: 100%;
     height: 30%;
-    background-size: cover;
+    background-image: url(../images/title.png);
     background-position: center;
+    background-size: cover;
     position: absolute;
     top: 5rem;
 }
 #credit {
-    position: absolute;
-    right: 2rem;
     bottom: 2rem;
     color: #fff;
+    position: absolute;
+    right: 2rem;
 }
 
 .btn {
-    position: absolute;
-    padding: .5rem;    
-    border-radius: .25rem;
     background-color: #fff;
-    z-index: 2;    
+    border-radius: .25rem;
+    padding: .5rem;    
+    position: absolute;
     transform: translate(-50%,-50%);
+    z-index: 2;    
 }
 .startButton {
-    top: 50%;
-    left: 50%;
     font-size: 3rem;
+    left: 50%;
+    top: 50%;
 }
 .musicButton {
     top: 3em;
@@ -109,16 +111,18 @@ body {
     right: 1em;
 }
 
+.line-through {text-decoration: line-through;}
+    
 .replayButton {
     font-size: 3rem;
-    top: 30rem;
     right: calc(50% + 2rem);
+    top: 30rem;
     transform: translateX(0%);
 }
 .partyButton {
     font-size: 3rem;
-    top: 30rem;
     left: calc(50% + 2rem);
+    top: 30rem;
     transform: translateX(0%);
 }
 .berzerk-deco {
@@ -143,27 +147,27 @@ body {
     /* z-index: 99; */
 }
 .hole:after {
+    width: 100%;
+    min-height: 6rem;
     content: '';
     display: block;
     background: url('../images/dirt.png') no-repeat;
     background-position: bottom;
     position: absolute;
-    width: 100%;
-    min-height: 6rem;
     bottom: -15px;
     background-size: contain;
     /* z-index: 101; */
 }
 
 .mole {
-    background-image: url('../images/mole.png');
-    position: absolute;
-    top: 100%;
     width: 100%;
     height: 100%;
-    transition: 0.4s;
-    background-repeat: no-repeat;
+    background-image: url('../images/mole.png');
     background-position: top;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 100%;
+    transition: 0.4s;
 }
 .mole.small {
     background-size: 60%;
@@ -174,12 +178,12 @@ body {
 .hole.up .mole.large {top: 10%;}
 .hole.up .mole.small {top: 40%;}
 .overlay {
-    background-color: #000;
-    opacity: .6;
-    position: absolute;
-    top: 0;
     width: 100%;
     height: 100%;
+    position: absolute;
+    background-color: #000;
+    opacity: .6;
+    top: 0;
     z-index: -1;
 }
 

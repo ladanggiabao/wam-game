@@ -16,11 +16,12 @@ const scoreboard = document.querySelector('.scoreboard');
 const gameboard = document.querySelector('.gameboard-wp');
 const moles = document.querySelectorAll('.mole');
 const countdownBoard = document.querySelector('.countdown');
+console.log(countdownBoard);
 
 const audio = 
-    [new Audio("../assets/audio/smack.mp3"),
-    new Audio("../assets/audio/crazy-frog.mp3"),
-    new Audio("../assets/audio/crazy-frog-nightcore.mp3")];
+    [new Audio("./assets/audio/smack.mp3"),
+    new Audio("./assets/audio/crazy-frog.mp3"),
+    new Audio("./assets/audio/crazy-frog-nightcore.mp3")];
 let musicon = true, soundon = true;
 
 const TIMELIMIT = 15000;
@@ -62,7 +63,7 @@ const opacityToggle = (...element) => {
         ele.classList.toggle('fade-out');
     });
 }
-const cdText = (string = '', extra = '') => {
+const cdText = (string = '',extra = '') => {
     (string) ? countdownBoard.textContent += (' ' + extra) 
     : countdownBoard.textContent = string; 
 }
@@ -76,7 +77,9 @@ const malletAnimation = () => {
     malletCursor.classList.add('mallet-move');
     setTimeout( () => {malletCursor.classList.remove('mallet-move')}, 500);
 }
-const moleAnimation = mole => {mole.classList.toggle('mole-animate');}
+const moleAnimation = (mole) => {
+    mole.classList.toggle('mole-animate');
+}
     
 //Sound Module
 const stopMusic = () => {
@@ -98,22 +101,37 @@ const gameStart = () => {
     score = 0;
     timesplayed++;
 
-    let i = (difficulty) ? 2 : 1; playTheme(audio[i]);
+    if (difficulty) {
+        i=2;
+    } else i=1; 
+    playTheme(audio,i);
 
     opacityToggle(welcomeScreen,overlay,gameboard,credit);
     displayToggle(gameboard);
-    if (timesplayed > 0) {
-        opacityToggle(gamemode,scoreboard);
-        displayToggle(gamemode,scoreboard);
-    } else startButton.classList.add('hideit');
+    startButton.classList.add('hideit');
+    displayToggle(scoreboard);
 
     let offset = 0;
     setTimeout(cdText, offset, 'Wait For It!!');
-    setTimeout(cdText, offset += 1000, '3');
-    setTimeout(cdText, offset += 1000, '', '2');
-    setTimeout(cdText, offset += 1000, '', '1');
-    setTimeout(cdText, offset += 500, '', 'SMACK THEM!!');
+    setTimeout(cdText, offset + 1000, '3');
+    setTimeout(cdText, offset + 1000, '', '2');
+    setTimeout(cdText, offset + 1000, '', '1');
+    setTimeout(cdText, offset + 500, '', 'SMACK THEM!!');
     setTimeout(() => {(difficulty) ? berzerkGame() : normalGame()}, offset += 500);
+}
+const gameReplay = () => {
+    malletAnimation();
+    timeUp = false;
+    score = 0;
+    timesplayed++;
+    
+    if (difficulty) {
+        i=2;
+    } else i=1; 
+    playTheme(audio,i);
+
+    opacityToggle(gamemode,scoreboard);
+    displayToggle(gamemode,scoreboard);
 }
 function gameOver() {
     timeUp = true;
@@ -164,8 +182,7 @@ function pickRandomHole(holes) {
 function whack() {
     score++;
     malletAnimation();
-    moleAnimation();
-    setTimeout(moleAnimation, Math.random() * 700 + 300);
+    moleAnimation(this);
 }
 
 function countingDown() {
